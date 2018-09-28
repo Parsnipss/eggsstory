@@ -26,7 +26,7 @@ def lavaMonkey():
         print("The monkey deftly slaps the spoon out of your hand.")
         print("You are sad, but the spoon wouldn't have done much anyways.")
         print("Weaponless and eggless, you return home hungry.")
-        print("You lose!")
+        print("You Lose!")
         gameExit = True
         return gameExit
     elif weapon == "Fork" or weapon == "fork":
@@ -37,7 +37,7 @@ def loseSpoon():
     print("The monkey deftly slaps the spoon out of your hand.")
     print("You are sad, but the spoon wouldn't have done much anyways.")
     print("Weaponless and eggless, you return home hungry.")
-    print("You lose!")
+    print("You Lose!")
     
 #Win Spoon
 def fightGrandma():
@@ -55,7 +55,7 @@ def loseGrandma():
     print("Although it is tempting to snatch the eggs away from grandma, you decide to let her keep the eggs.")
     print("The Grandma notices your sad face and gives you a lolipop for letting her keep the eggs.")
     print("With a lolipop in your hand, you return to your eggsless home.")
-    print("You lose!")
+    print("You Lose!")
     gameExit = True
     return gameExit
 
@@ -91,10 +91,44 @@ def butter():
     print("You quickly whip out your stick of fresh butter and begin to cover yourself in a thick layer of butter.")
     print("Now that you're all buttered up, you get on the slide and start cruising down to the market.")
     print("You finally arrive to the Premium Market and grab the glorious eggs, BUT you realize you don't have enough money!")
-    print("You can either steal the eggs or return home eggless.")
+    print("Would you steal the eggs for your precious omellete?")
+    steal = input("Do you wish to steal the eggs? (Yes or No): ")
+    if steal == "Yes" or steal == "yes":
+        yesSteal()
+    elif steal == "No" or steal == "no":
+        noSteal()
 
-
-
+#Win Steal
+def yesSteal():
+    print("You look around aisle to see if anyone is around before carefully hiding the eggs under your jacket.")
+    print("As you walk closer and closer to the exit, you dash immediately out of the store after one of your eggs fell on the floor!")
+    print("The security guard begins chasing after you, but you manage to get away from him and safely return home.")
+    print("Now that you have the eggs, you make the most delicious omellete ever and enjoy your meal.")
+    print("You Win!")
+    exit = input("Do you wish to exit the game? (Yes or No): ")
+    if exit == "Yes" or exit == "yes":
+        gameExit = True
+    else:
+        print("Too bad! You're going to be kicked out!")
+        gameExit = True
+    
+#Lose Steal
+def noSteal():
+    print("You decide not to steal the eggs because it's the wrong thing to do and you don't want to go to jail.")
+    print("You return to your eggless home and decide to just cook some omellete flavored cup noodles instead.")
+    print("You Lose!")
+    gameExit = True
+    return gameExit
+    
+#Lose Run
+def run():
+    print("You take off your shoes in order to run down the hot, burning, plastic slide.")
+    print("As you run down the slide, you're in agonizing pain because you burned you feet.")
+    print("Suddenly the slide begins to work properly again and a gush of water begins to flow down the slide!")
+    print("You slip and begin to enjoy the ride until the slide makes you miss Whole Foods and you are separated from your precious eggs.")
+    print("You Lose!")
+    gameExit = True
+    return gameExit
 
 print("You are Gordon Ramsay, and on this particular day you are craving an omellete.")
 print("You get out of bed, excited for the ensuing eggselence, only to find that you have no eggs in the fridge.")
