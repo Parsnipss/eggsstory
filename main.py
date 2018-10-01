@@ -1,36 +1,43 @@
 import time
 
+from colorama import Fore, Back, Style, init
+
 gameExit = False
 
 while gameExit == True:
-    print ("Exiting the game!")
-    time.sleep(3)
     break
 
 def firstChoice():
-    print("The Value Grocery store lies at the end of a forest with a lava floor.")
-    print("The Premium Grocery is accessible through a large waterside outside your house.")
+    print("You are" + Fore.RED, Style.BRIGHT + "Gordon Ramsay" + Style.RESET_ALL +", and on this particular day you are craving an omellete.")
+    print("You get out of bed, excited for the ensuing eggselence, only to find that you have no" + Fore.YELLOW, Style.BRIGHT + "eggs" + Style.RESET_ALL + " in the fridge.")
+    print("This means that you will have to make the trip out to one of two grocery stores.")
+    print(Fore.MAGENTA + "The Value Grocery" + Style.RESET_ALL + " store lies at the end of a forest with a lava floor.")
+    print(Fore.CYAN + "The Premium Grocery" + Style.RESET_ALL + " store is accessible through a large waterside outside your house.")
     print("Both of these grocery stores have the eggs for your omellete.")
     choice = input("Which grocery store do you want to get the eggs from? (Value or Premium): ")
-    return choice
-
+    
+    if choice == "Value" or choice == "value":  #See "Value Route"
+        lavaMonkey()
+    elif choice == "Premium" or choice == "premium":    #See "Premium Route"
+        waterSlide()
+    else:   #The Catch
+        print("You look around, but do not see a store by that name.")
+        firstChoice()
 """
 Value Market Route
 """
 def lavaMonkey():
-    print("While staying away from the lava isn't particularly difficult, a lava monkey stands in the way between you and the eggs you seek.")
+    print("While staying away from the lava isn't particularly difficult, a " + Back.RED + Fore.BLACK + "lava monkey" + Style.RESET_ALL + " stands in the way between you and the eggs you seek.")
     print("Being the fantastic chef you are, you always carry a set of utensils with you at all times.")
     print("In order to get past the monkey, you consider using either the Spoon or the Fork as a weapon.")
     weapon = input("Spoon or Fork? ")
-    if weapon == "Spoon" or weapon == "spoon":
-        print("The monkey deftly slaps the spoon out of your hand.")
-        print("You are sad, but the spoon wouldn't have done much anyways.")
-        print("Weaponless and eggless, you return home hungry.")
-        print("You Lose!")
-        gameExit = True
-        return gameExit
-    elif weapon == "Fork" or weapon == "fork":
+    if weapon == "Spoon" or weapon == "spoon": #Lose choice
+        loseSpoon()
+    elif weapon == "Fork" or weapon == "fork": #Win choice
         fightGrandma()
+    else:
+        print("That is not a Fork or a Spoon.")
+        lavaMonkey()
 
 #Lose Spoon
 def loseSpoon():
@@ -38,17 +45,21 @@ def loseSpoon():
     print("You are sad, but the spoon wouldn't have done much anyways.")
     print("Weaponless and eggless, you return home hungry.")
     print("You Lose!")
-    
+    gameExit = True
+    return gameExit
 #Win Spoon
 def fightGrandma():
     print("The lava monkey does not like being poked, and he returns to his treetop home opening the way forward.")
     print("You make it inside the Value Grocery store, but by the time you make it to the eggs, a normal grocery store grandma has taken the last dozen!")
     print("You REALLY want that omellete, but would you fight a grandma for it?")
     fight = input("(Yes or No): ")
-    if fight == "Yes" or fight == "yes":
+    if fight == "Yes" or fight == "yes": #Win Choice
         valueEggs()
-    elif fight == "No" or fight == "no":
+    elif fight == "No" or fight == "no": #Lose Choice
         loseGrandma()
+    else:
+        print("Please answer either Yes or No or you cannot go on.")
+        fightGrandma()
 
 #Lose Grandma 
 def loseGrandma():
@@ -61,15 +72,20 @@ def loseGrandma():
 
 #Win Grandma
 def valueEggs():
+    print("The grandma puts up a tough fight, but you manage to wrangle the eggs away from her.")
     print("You (Gordon Ramsay) have successfully aquired eggs from the Value Market and have made yourself a delicious omellete!")
     print("Since you fought a grandma for eggs in a grocery store, I'm unsure you can call this a moral victory, but you won either way.")
     exit = input("Do you wish to exit the game? (Yes or No): ")
     if exit == "Yes" or exit == "yes":
         gameExit = True
-    else:
-        print("Too bad! You are leaving either way!")
+        return gameExit
+    elif exit == "No" or exit == "no": #HOLD
+        print ("Fine, then you can sit here.")
+        input()
+    else:    
+        print("I'm going to assume that means you want to leave.")
         gameExit = True
-    
+        return gameExit
 
 """
 Premium Market Route
@@ -79,9 +95,9 @@ def waterSlide():
     print("Being the fantastic chef you are, You are carrying a full stick of butter with you.")
     print("At this point you can either butter yourself up for the slide, or run down it barefoot (to avoid slipping).")
     slide = input("Butter or Run? ")
-    if slide == "Butter" or slide == "butter":
+    if slide == "Butter" or slide == "butter": #Win choice
         butter()
-    elif slide == "Run" or slide == "run":
+    elif slide == "Run" or slide == "run": #Lose Choice
         run()
     else:
         print("Gordon's inability to decide will force him to run down the slide!")
@@ -93,10 +109,12 @@ def butter():
     print("You finally arrive to the Premium Market and grab the glorious eggs, BUT you realize you don't have enough money!")
     print("Would you steal the eggs for your precious omellete?")
     steal = input("Do you wish to steal the eggs? (Yes or No): ")
-    if steal == "Yes" or steal == "yes":
+    if steal == "Yes" or steal == "yes": #Win Choice
         yesSteal()
-    elif steal == "No" or steal == "no":
+    elif steal == "No" or steal == "no": #Lose Choice
         noSteal()
+    else:
+        print("Please say either Yes or No if you want to go on.")
 
 #Win Steal
 def yesSteal():
@@ -108,9 +126,14 @@ def yesSteal():
     exit = input("Do you wish to exit the game? (Yes or No): ")
     if exit == "Yes" or exit == "yes":
         gameExit = True
-    else:
-        print("Too bad! You're going to be kicked out!")
+        return gameExit
+    elif exit == "No" or exit == "no": #HOLD
+        print ("Fine, then you can sit here.")
+        input()
+    else:    
+        print("I'm going to assume that means you want to leave.")
         gameExit = True
+        return gameExit
     
 #Lose Steal
 def noSteal():
@@ -129,16 +152,5 @@ def run():
     print("You Lose!")
     gameExit = True
     return gameExit
-
-print("You are Gordon Ramsay, and on this particular day you are craving an omellete.")
-print("You get out of bed, excited for the ensuing eggselence, only to find that you have no eggs in the fridge.")
-print("This means that you will have to make the trip out to one of two grocery stores.")
-store = firstChoice()
-#First Choice
-if store == "Value" or store == "value":
-    lavaMonkey()
-elif store == "Premium" or store == "premium":
-    waterSlide()
     
-    
-    
+firstChoice()
