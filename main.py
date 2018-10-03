@@ -11,10 +11,10 @@ def firstChoice():
     print("You are" + Fore.RED, Style.BRIGHT + "Gordon Ramsay" + Style.RESET_ALL +", and on this particular day you are craving an omellete.")
     print("You get out of bed, excited for the ensuing eggselence, only to find that you have no" + Fore.YELLOW, Style.BRIGHT + "eggs" + Style.RESET_ALL + " in the fridge.")
     print("This means that you will have to make the trip out to one of two grocery stores.")
-    print(Fore.MAGENTA + "The Value Grocery" + Style.RESET_ALL + " store lies at the end of a forest with a lava floor.")
-    print(Fore.CYAN + "The Premium Grocery" + Style.RESET_ALL + " store is accessible through a large waterside outside your house.")
+    print(Fore.MAGENTA, Style.BRIGHT + "The Value Grocery" + Style.RESET_ALL + " store lies at the end of a forest with a lava floor.")
+    print(Fore.CYAN, Style.BRIGHT + "The Premium Grocery" + Style.RESET_ALL + " store is accessible through a large waterside outside your house.")
     print("Both of these grocery stores have the eggs for your omellete.")
-    choice = input("Which grocery store do you want to get the eggs from? (Value or Premium): ")
+    choice = input("Which grocery store do you want to get the eggs from? (" + Fore.MAGENTA + " Value" + Style.RESET_ALL + " or " + Fore.CYAN + "Premium" + Style.RESET_ALL + "): ")
     
     if choice == "Value" or choice == "value":  #See "Value Route"
         lavaMonkey()
@@ -130,7 +130,7 @@ def waterSlide():
         waterSlide()
 
 def butter():
-    print("You quickly whip out your stick of fresh " + Fore.YELLOW + "butter" + Style.RESET_ALL + "and begin to cover yourself in a thick layer of butter.")
+    print("You quickly whip out your stick of fresh " + Fore.YELLOW + "butter " + Style.RESET_ALL + "and begin to cover yourself in a thick layer of butter.")
     print("Now that you're all buttered up, you get on the slide and start cruising down to the market.")
     print("You finally arrive to the Premium Market and grab the glorious eggs, BUT you realize you don't have enough money!")
     print("Would you steal the eggs for your precious omellete?")
