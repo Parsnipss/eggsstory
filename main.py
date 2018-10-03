@@ -1,7 +1,11 @@
 import time
 
+#Components for colored text
 from colorama import Fore, Back, Style, init
 
+init()
+
+#Game is not ending until this value is True.
 gameExit = False
 
 while gameExit == True:
@@ -25,7 +29,7 @@ def firstChoice():
         time.sleep(1)
         firstChoice()
 """
-Value Market Route
+Value Market Route------
 """
 def lavaMonkey():
     print("While staying away from the lava isn't particularly difficult, a " + Fore.BLACK + Back.RED + "lava monkey" + Style.RESET_ALL + " stands in the way between you and the eggs you seek.")
@@ -113,7 +117,7 @@ def valueEggs():
         return gameExit
 
 """
-Premium Market Route
+Premium Market Route------
 """
 def waterSlide():
     print("You approach the waterslide, expecting a quick journey, only to find that it is completely dry!")
@@ -201,5 +205,6 @@ def run():
         time.sleep(3)
         gameExit = True
         return gameExit
-    
+
+#Game is started by calling firstChoice()    
 firstChoice()
